@@ -4,6 +4,10 @@
 
 This is a frontend finance dashboard built with **React**, **Vite**, **Tailwind CSS**, and **Recharts**. It allows users to track income and expenses and understand spending patterns at a glance.
 
+## Live Demo
+
+Deployed on Vercel: finance-dashboard-001.netlify.app
+
 ## Tech Stack
 
 - **React 18** with **Vite**
@@ -67,6 +71,4 @@ The role can be switched using the dropdown in the top navbar.
 - **Roles** are simulated on the frontend for demonstration purposes.
 - **Data resets on page refresh** — there is no persistence.
 
-## Live Demo
 
-Deployed on Vercel: [add link after deployment]
