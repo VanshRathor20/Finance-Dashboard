@@ -94,5 +94,3 @@ The role can be switched using the dropdown in the top navbar.
 
 ## Author
 Vansh Rathor
-E-Mart-Website
-
