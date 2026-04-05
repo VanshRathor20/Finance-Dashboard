@@ -4,9 +4,13 @@
 
 This is a frontend finance dashboard built with **React**, **Vite**, **Tailwind CSS**, and **Recharts**. It allows users to track income and expenses and understand spending patterns at a glance.
 
+---
+
 ## Live Demo
 
-Deployed on Vercel: finance-dashboard-001.netlify.app
+Deployed on Vercel: [finance-dashboard-001.netlify.app]
+
+---
 
 ## Tech Stack
 
@@ -16,6 +20,8 @@ Deployed on Vercel: finance-dashboard-001.netlify.app
 - **React Router v6** for navigation
 - **Context API** + **useState** for state management
 - **Lucide React** for icons
+  
+---
 
 ## Features
 
@@ -29,6 +35,8 @@ Deployed on Vercel: finance-dashboard-001.netlify.app
 - Insights page with monthly comparison bar chart, category breakdown, and smart observations
 - Responsive layout
 - Empty state handling when no transactions match filters
+  
+---
 
 ## Setup Instructions
 
@@ -58,6 +66,8 @@ src/
 └── App.jsx
 ```
 
+---
+
 ## Role-Based Access
 
 - **Admin:** Can view all data, add transactions, edit transactions, and delete transactions.
@@ -65,10 +75,24 @@ src/
 
 The role can be switched using the dropdown in the top navbar.
 
+---
+
 ## Assumptions
 
 - **Mock data** is used instead of a real backend.
 - **Roles** are simulated on the frontend for demonstration purposes.
 - **Data resets on page refresh** — there is no persistence.
 
+---
+
+## Feedback & Contributions
+
+- If you have suggestions or want to help improve the project
+- feel free to open an issue or submit a pull request!
+
+---
+
+## Author
+Vansh Rathor
+E-Mart-Website
 
