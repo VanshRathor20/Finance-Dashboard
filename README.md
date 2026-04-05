@@ -8,7 +8,7 @@ This is a frontend finance dashboard built with **React**, **Vite**, **Tailwind 
 
 ## Live Demo
 
-Deployed on Vercel: [finance-dashboard-001.netlify.app]
+Deployed on Netlify : [https://finance-dashboard-001.netlify.app/dashboard]
 
 ---
 
