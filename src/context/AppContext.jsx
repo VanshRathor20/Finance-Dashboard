@@ -45,6 +45,10 @@ function AppProvider({ children }) {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
+  const resetTransactions = useCallback(() => {
+    setTransactions([...initialTransactions]);
+  }, []);
+
   const value = useMemo(
     () => ({
       transactions,
@@ -55,15 +59,18 @@ function AppProvider({ children }) {
       addTransaction,
       editTransaction,
       deleteTransaction,
+      resetTransactions,
     }),
     [
       transactions,
       role,
       filters,
+      setRole,
       setFilters,
       addTransaction,
       editTransaction,
       deleteTransaction,
+      resetTransactions,
     ]
   );
 

@@ -1,6 +1,13 @@
+import { useEffect, useRef, useState } from "react";
 import { Bell } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
+
+const NOTIFICATIONS = [
+  "Rent payment of ₹8,500 due tomorrow",
+  "You have exceeded your Food budget this month",
+  "New transaction added successfully",
+];
 
 function breadcrumbForPath(pathname) {
   if (pathname.startsWith("/dashboard")) {
@@ -12,13 +19,36 @@ function breadcrumbForPath(pathname) {
   if (pathname.startsWith("/insights")) {
     return { section: "Insights", page: "Summary" };
   }
+  if (pathname.startsWith("/profile")) {
+    return { section: "Account", page: "Profile" };
+  }
+  if (pathname.startsWith("/settings")) {
+    return { section: "Account", page: "Settings" };
+  }
   return { section: "Dashboard", page: "Overview" };
 }
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const { role, setRole } = useApp();
+  const { role, setRole, filters, setFilters } = useApp();
   const { section, page } = breadcrumbForPath(pathname);
+
+  const [notifOpen, setNotifOpen] = useState(false);
+  const notifContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (!notifOpen) return;
+    function handlePointerDown(e) {
+      if (
+        notifContainerRef.current &&
+        !notifContainerRef.current.contains(e.target)
+      ) {
+        setNotifOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [notifOpen]);
 
   return (
     <header
@@ -38,6 +68,8 @@ export default function Navbar() {
         <input
           type="search"
           placeholder="Search transactions..."
+          value={filters.search}
+          onChange={(e) => setFilters({ search: e.target.value })}
           className="h-9 w-[200px] shrink-0 rounded-lg border border-[#334155] bg-[#1e293b] px-3 text-sm text-[#94a3b8] placeholder:text-[#64748b] outline-none focus:border-[#475569] focus:ring-1 focus:ring-[#475569]"
           aria-label="Search transactions"
         />
@@ -50,13 +82,40 @@ export default function Navbar() {
           <option value="admin">Admin</option>
           <option value="viewer">Viewer</option>
         </select>
-        <button
-          type="button"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#334155] bg-[#1e293b] text-[#94a3b8] transition-colors hover:bg-[#334155]/40 hover:text-[#f1f5f9]"
-          aria-label="Notifications"
-        >
-          <Bell className="h-5 w-5" strokeWidth={2} />
-        </button>
+        <div className="relative" ref={notifContainerRef}>
+          <button
+            type="button"
+            onClick={() => setNotifOpen((o) => !o)}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#334155] bg-[#1e293b] text-[#94a3b8] transition-colors hover:bg-[#334155]/40 hover:text-[#f1f5f9] data-[open=true]:border-[#10b981]/50"
+            aria-label="Notifications"
+            aria-expanded={notifOpen}
+            aria-haspopup="true"
+            data-open={notifOpen}
+          >
+            <Bell className="h-5 w-5" strokeWidth={2} />
+          </button>
+          {notifOpen && (
+            <div
+              className="absolute right-0 top-full z-50 mt-2 w-80 max-w-[calc(100vw-3rem)] rounded-xl border border-[#334155] bg-[#1e293b] py-2 shadow-xl"
+              role="menu"
+            >
+              <p className="border-b border-[#334155] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#64748b]">
+                Notifications
+              </p>
+              <ul className="max-h-72 overflow-y-auto py-1">
+                {NOTIFICATIONS.map((text, i) => (
+                  <li
+                    key={i}
+                    className="border-b border-[#334155]/60 px-4 py-3 text-sm text-[#94a3b8] last:border-0 hover:bg-[#0f172a]/60"
+                    role="menuitem"
+                  >
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
