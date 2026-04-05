@@ -6,13 +6,15 @@ export default function Profile() {
   const roleLabel = role === "admin" ? "Admin" : "Viewer";
 
   return (
-    <div className="min-h-full w-full bg-[#0f172a] p-6">
-      <div className="mb-6">
-        <h1 className="text-xl font-semibold text-[#f1f5f9]">Profile</h1>
+    <div className="min-h-full w-full max-w-full bg-[#0f172a] px-4 py-5 sm:p-6">
+      <div className="mb-5 sm:mb-6">
+        <h1 className="text-lg font-semibold text-[#f1f5f9] sm:text-xl">
+          Profile
+        </h1>
         <p className="mt-1 text-sm text-[#64748b]">Your account information</p>
       </div>
 
-      <div className="mx-auto max-w-lg rounded-xl border border-[#334155] bg-[#1e293b] p-8">
+      <div className="mx-auto w-full max-w-full rounded-xl border border-[#334155] bg-[#1e293b] p-5 sm:max-w-lg sm:p-8">
         <div className="flex flex-col items-center text-center">
           <div
             className="flex h-20 w-20 items-center justify-center rounded-full bg-[#10b981]/20 text-2xl font-semibold text-[#10b981]"

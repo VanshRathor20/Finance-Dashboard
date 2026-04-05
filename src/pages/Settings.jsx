@@ -5,15 +5,17 @@ export default function Settings() {
   const { role, setRole, resetTransactions } = useApp();
 
   return (
-    <div className="min-h-full w-full bg-[#0f172a] p-6">
-      <div className="mb-6">
-        <h1 className="text-xl font-semibold text-[#f1f5f9]">Settings</h1>
+    <div className="min-h-full w-full max-w-full bg-[#0f172a] px-4 py-5 sm:p-6">
+      <div className="mb-5 sm:mb-6">
+        <h1 className="text-lg font-semibold text-[#f1f5f9] sm:text-xl">
+          Settings
+        </h1>
         <p className="mt-1 text-sm text-[#64748b]">
           Preferences and data controls
         </p>
       </div>
 
-      <div className="mx-auto flex max-w-lg flex-col gap-6">
+      <div className="mx-auto flex w-full max-w-full flex-col gap-5 sm:max-w-lg sm:gap-6">
         <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-6">
           <div className="mb-4 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#10b981]/15 text-[#10b981]">

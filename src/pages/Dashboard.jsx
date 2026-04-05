@@ -76,7 +76,7 @@ function BalanceTooltip({ active, payload, label }) {
 
 function SummaryCard({ title, amount, badge, icon: Icon, iconClass, badgeTone }) {
   return (
-    <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-5 shadow-sm">
+    <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 shadow-sm sm:p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-start gap-3">
           <div
@@ -89,7 +89,7 @@ function SummaryCard({ title, amount, badge, icon: Icon, iconClass, badgeTone })
           </div>
           <div className="min-w-0">
             <p className="text-sm text-[#64748b]">{title}</p>
-            <p className="mt-1 truncate text-lg font-semibold text-[#f1f5f9]">
+            <p className="mt-1 truncate text-base font-semibold text-[#f1f5f9] sm:text-lg">
               {formatInr(amount)}
             </p>
           </div>
@@ -183,15 +183,17 @@ export default function Dashboard() {
   }, [transactions]);
 
   return (
-    <div className="min-h-full w-full space-y-6 bg-[#0f172a] p-6">
+    <div className="min-h-full w-full space-y-4 bg-[#0f172a] p-4 sm:space-y-6 sm:p-6">
       <div>
-        <h1 className="text-xl font-semibold text-[#f1f5f9]">Dashboard</h1>
+        <h1 className="text-lg font-semibold text-[#f1f5f9] sm:text-xl">
+          Dashboard
+        </h1>
         <p className="mt-1 text-sm text-[#64748b]">
           Overview of your finances
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         <SummaryCard
           title="Total Balance"
           amount={totalBalance}
@@ -226,12 +228,12 @@ export default function Dashboard() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 lg:col-span-3">
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:gap-6">
+        <div className="w-full rounded-xl border border-[#334155] bg-[#1e293b] p-3 sm:p-4 lg:col-span-3">
           <h2 className="mb-4 text-sm font-medium text-[#94a3b8]">
             Monthly balance trend
           </h2>
-          <div className="h-[320px] w-full min-w-0">
+          <div className="h-[240px] w-full min-w-0 sm:h-[280px] lg:h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart
                 data={monthlyTrend}
@@ -274,11 +276,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 lg:col-span-2">
+        <div className="w-full rounded-xl border border-[#334155] bg-[#1e293b] p-3 sm:p-4 lg:col-span-2">
           <h2 className="mb-2 text-sm font-medium text-[#94a3b8]">
             Expenses by category
           </h2>
-          <div className="h-[260px] w-full min-w-0">
+          <div className="h-[220px] w-full min-w-0 sm:h-[240px] lg:h-[260px]">
             {pieTotal > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>

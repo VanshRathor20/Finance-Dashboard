@@ -201,33 +201,37 @@ export default function Insights() {
     metrics.topAprilAmount > metrics.thisMonthExpenses / 2;
 
   return (
-    <div className="min-h-full w-full space-y-6 bg-[#0f172a] p-6">
+    <div className="min-h-full w-full space-y-4 bg-[#0f172a] p-4 sm:space-y-6 sm:p-6">
       <div>
-        <h1 className="text-xl font-semibold text-[#f1f5f9]">Insights</h1>
+        <h1 className="text-lg font-semibold text-[#f1f5f9] sm:text-xl">
+          Insights
+        </h1>
         <p className="mt-1 text-sm text-[#64748b]">
           Spending patterns and trends
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-5">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 sm:p-5">
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400">
               <Target className="h-5 w-5" strokeWidth={2} />
             </div>
             <div className="min-w-0">
-              <p className="text-sm text-[#64748b]">Highest spend category</p>
-              <p className="mt-1 truncate text-lg font-semibold text-[#f1f5f9]">
+              <p className="text-xs text-[#64748b] sm:text-sm">
+                Highest spend category
+              </p>
+              <p className="mt-1 truncate text-base font-semibold text-[#f1f5f9] sm:text-lg">
                 {metrics.highestSpendCategory}
               </p>
-              <p className="mt-0.5 text-sm font-medium text-[#94a3b8]">
+              <p className="mt-0.5 truncate text-xs font-medium text-[#94a3b8] sm:text-sm">
                 {formatInr(metrics.highestSpendAmount)}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-5">
+        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 sm:p-5">
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400">
               <Percent className="h-5 w-5" strokeWidth={2} />
@@ -235,7 +239,7 @@ export default function Insights() {
             <div className="min-w-0">
               <p className="text-sm text-[#64748b]">Savings rate</p>
               <p
-                className={`mt-1 text-2xl font-bold tabular-nums ${
+                className={`mt-1 text-xl font-bold tabular-nums sm:text-2xl ${
                   savingsGood ? "text-emerald-400" : "text-red-400"
                 }`}
               >
@@ -245,7 +249,7 @@ export default function Insights() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-5">
+        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 sm:p-5">
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-500/15 text-amber-400">
               <Wallet className="h-5 w-5" strokeWidth={2} />
@@ -260,7 +264,7 @@ export default function Insights() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-5">
+        <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4 sm:p-5">
           <div className="flex items-start gap-3">
             <div
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
@@ -288,11 +292,12 @@ export default function Insights() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
+      <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-3 sm:p-4">
         <h2 className="mb-1 text-sm font-medium text-[#94a3b8]">
           Monthly comparison
         </h2>
-        <div className="mb-4 flex flex-wrap items-center justify-center gap-8 pt-2 text-sm">
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-6 pt-2 text-sm sm:gap-8">
           <span className="flex items-center gap-2 text-[#94a3b8]">
             <span
               className="h-3 w-3 rounded-sm bg-[#10b981]"
@@ -308,7 +313,7 @@ export default function Insights() {
             Expenses
           </span>
         </div>
-        <div className="h-[320px] w-full min-w-0">
+        <div className="h-[240px] w-full min-w-0 sm:h-[280px] lg:h-[320px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={metrics.monthlyBars}
@@ -350,7 +355,7 @@ export default function Insights() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-4">
+      <div className="rounded-xl border border-[#334155] bg-[#1e293b] p-3 sm:p-4">
         <div className="mb-4 flex items-center gap-2">
           <PieChart className="h-5 w-5 text-[#64748b]" strokeWidth={2} />
           <h2 className="text-sm font-medium text-[#94a3b8]">
@@ -413,6 +418,7 @@ export default function Insights() {
           </div>
         )}
       </div>
+      </div>
 
       <div>
         <div className="mb-3 flex items-center gap-2">
@@ -421,9 +427,9 @@ export default function Insights() {
             Insights summary
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <div
-            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-5 ${
+            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-4 sm:p-5 ${
               topCategoryAttention ? "border-l-red-500" : "border-l-emerald-500"
             }`}
           >
@@ -441,7 +447,7 @@ export default function Insights() {
           </div>
 
           <div
-            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-5 ${
+            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-4 sm:p-5 ${
               spentMoreThisMonth ? "border-l-red-500" : "border-l-emerald-500"
             }`}
           >
@@ -459,7 +465,7 @@ export default function Insights() {
           </div>
 
           <div
-            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-5 ${
+            className={`rounded-xl border border-[#334155] border-l-4 bg-[#1e293b] p-4 sm:p-5 ${
               savingsGood ? "border-l-emerald-500" : "border-l-red-500"
             }`}
           >

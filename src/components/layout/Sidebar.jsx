@@ -20,11 +20,18 @@ const navLinkClass = ({ isActive }) =>
 const accountLinkClass =
   "flex items-center gap-3 border-l-4 border-transparent py-2.5 pl-3 pr-2 text-sm font-medium text-[#64748b] transition-colors hover:text-[#94a3b8]";
 
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }) {
   const { role } = useApp();
 
+  const closeMobile = () => {
+    onNavigate?.();
+  };
+
   return (
-    <div className="flex h-full w-full min-h-0 flex-col bg-[#1e293b]">
+    <div
+      id="app-sidebar"
+      className="flex h-full w-full min-h-0 flex-col bg-[#1e293b]"
+    >
       <div className="shrink-0 border-b border-[#334155] px-4 py-5">
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#10b981]/20 text-[#10b981]">
@@ -38,15 +45,28 @@ export default function Sidebar() {
 
       <nav className="flex min-h-0 flex-1 flex-col px-3 py-5">
         <div className="space-y-1">
-          <NavLink to="/dashboard" className={navLinkClass} end>
+          <NavLink
+            to="/dashboard"
+            className={navLinkClass}
+            end
+            onClick={closeMobile}
+          >
             <LayoutDashboard className="h-5 w-5 shrink-0" strokeWidth={2} />
             Dashboard
           </NavLink>
-          <NavLink to="/transactions" className={navLinkClass}>
+          <NavLink
+            to="/transactions"
+            className={navLinkClass}
+            onClick={closeMobile}
+          >
             <ArrowLeftRight className="h-5 w-5 shrink-0" strokeWidth={2} />
             Transactions
           </NavLink>
-          <NavLink to="/insights" className={navLinkClass}>
+          <NavLink
+            to="/insights"
+            className={navLinkClass}
+            onClick={closeMobile}
+          >
             <TrendingUp className="h-5 w-5 shrink-0" strokeWidth={2} />
             Insights
           </NavLink>
@@ -57,11 +77,19 @@ export default function Sidebar() {
             Account
           </p>
           <div className="space-y-1">
-            <NavLink to="/profile" className={accountLinkClass}>
+            <NavLink
+              to="/profile"
+              className={accountLinkClass}
+              onClick={closeMobile}
+            >
               <User className="h-5 w-5 shrink-0" strokeWidth={2} />
               Profile
             </NavLink>
-            <NavLink to="/settings" className={accountLinkClass}>
+            <NavLink
+              to="/settings"
+              className={accountLinkClass}
+              onClick={closeMobile}
+            >
               <Settings className="h-5 w-5 shrink-0" strokeWidth={2} />
               Settings
             </NavLink>

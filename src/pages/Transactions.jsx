@@ -164,17 +164,19 @@ export default function Transactions() {
   }
 
   return (
-    <div className="min-h-full w-full bg-[#0f172a] p-6">
-      <div className="mb-6">
-        <h1 className="text-xl font-semibold text-[#f1f5f9]">Transactions</h1>
+    <div className="min-h-full w-full bg-[#0f172a] p-4 sm:p-6">
+      <div className="mb-5 sm:mb-6">
+        <h1 className="text-lg font-semibold text-[#f1f5f9] sm:text-xl">
+          Transactions
+        </h1>
         <p className="mt-1 text-sm text-[#64748b]">
           View and manage your activity
         </p>
       </div>
 
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-        <div className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
-          <div className="w-full min-w-[160px] sm:w-48">
+      <div className="mb-5 flex flex-col gap-4 md:mb-6 md:flex-row md:flex-wrap md:items-end md:justify-between">
+        <div className="grid min-w-0 flex-1 grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-end">
+          <div className="col-span-2 md:col-span-1 md:w-48">
             <label className="mb-1 block text-xs font-medium text-[#64748b]">
               Search
             </label>
@@ -187,7 +189,7 @@ export default function Transactions() {
               aria-label="Search transactions by description"
             />
           </div>
-          <div className="w-full min-w-[140px] sm:w-40">
+          <div className="min-w-0 md:w-40">
             <label className="mb-1 block text-xs font-medium text-[#64748b]">
               Type
             </label>
@@ -204,7 +206,7 @@ export default function Transactions() {
               ))}
             </select>
           </div>
-          <div className="w-full min-w-[160px] sm:w-44">
+          <div className="min-w-0 md:w-44">
             <label className="mb-1 block text-xs font-medium text-[#64748b]">
               Category
             </label>
@@ -222,7 +224,7 @@ export default function Transactions() {
               ))}
             </select>
           </div>
-          <div className="w-full min-w-[180px] sm:w-52">
+          <div className="col-span-2 min-w-0 md:col-span-1 md:w-52">
             <label className="mb-1 block text-xs font-medium text-[#64748b]">
               Sort
             </label>
@@ -244,14 +246,14 @@ export default function Transactions() {
           <button
             type="button"
             onClick={openAddModal}
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-lg bg-[#10b981] px-4 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#34d399]"
+            className="inline-flex h-10 w-full shrink-0 items-center justify-center rounded-lg bg-[#10b981] px-4 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#34d399] md:w-auto"
           >
             + Add Transaction
           </button>
         )}
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-[#334155] bg-[#1e293b]">
+      <div className="rounded-xl border border-[#334155] bg-[#1e293b]">
         {filteredSorted.length === 0 ? (
           <div className="flex min-h-[320px] flex-col items-center justify-center gap-3 px-6 py-16 text-center">
             <Inbox
@@ -264,7 +266,7 @@ export default function Transactions() {
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b border-[#334155] bg-[#0f172a]/50">
@@ -363,7 +365,7 @@ export default function Transactions() {
 
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 p-4"
           role="presentation"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeModal();
